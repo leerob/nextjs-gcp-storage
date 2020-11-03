@@ -18,6 +18,7 @@ Retrieve your existing project ID, bucket name, and service account email and pr
 1. Run `gcloud config set project nextjs-storage-bucket`.
 1. Run `gcloud auth application-default login`, per [setup instructions](https://www.pulumi.com/docs/intro/cloud-providers/gcp/setup/).
 1. Run `pulumi up` to deploy your bucket (it will prompt you to log in).
+1. View your newly created bucket and add the bucket name to `.env.local` (see `.env.example`).
 1. Create a new [service account](https://console.cloud.google.com/iam-admin/serviceaccounts) with a role of `Storage Object Creator`.
 1. Click "Create Key" and save the JSON file.
 1. Add the `project_id`, `client_email`, and `private_key` to `.env.local` (see `.env.example`).
