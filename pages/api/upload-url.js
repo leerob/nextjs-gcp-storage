@@ -9,16 +9,13 @@ export default async function handler(req, res) {
     },
   });
 
+  const bucket = storage.bucket(process.env.BUCKET_NAME);
+  const file = bucket.file(req.query.file);
   const options = {
-    version: 'v4',
-    action: 'write',
-    expires: Date.now() + 15 * 60 * 1000, // 15 minutes
-    contentType: 'application/octet-stream',
+    expires: Date.now() + 1 * 60 * 1000, //  1 minute,
+    fields: { 'x-goog-meta-test': 'data' },
   };
-  const [url] = await storage
-    .bucket(process.env.BUCKET_NAME)
-    .file(req.query.file)
-    .getSignedUrl(options);
 
-  res.status(200).json({ url });
+  const [response] = await file.generateSignedPostPolicyV4(options);
+  res.status(200).json(response);
 }

@@ -6,7 +6,7 @@ const gcp = require('@pulumi/gcp');
 const bucket = new gcp.storage.Bucket('my-bucket', {
   cors: [
     {
-      methods: ['PUT'],
+      methods: ['POST'],
       origins: ['*'],
       responseHeaders: ['*'],
     },
