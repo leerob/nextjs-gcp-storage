@@ -4,8 +4,11 @@ export default async function handler(req, res) {
   const storage = new Storage({
     projectId: process.env.PROJECT_ID,
     credentials: {
+      type: 'service_account',
       client_email: process.env.CLIENT_EMAIL,
       private_key: process.env.PRIVATE_KEY,
+      client_id: process.env.CLIENT_ID,
+      universe_domain: process.env.UNIVERSE_DOMAIN,
     },
   });
 
